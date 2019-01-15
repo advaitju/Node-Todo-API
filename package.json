@@ -1,0 +1,23 @@
+{
+  "name": "Node-Todo-API",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/advaitju/Node-Todo-API.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/advaitju/Node-Todo-API/issues"
+  },
+  "homepage": "https://github.com/advaitju/Node-Todo-API#readme",
+  "dependencies": {
+    "mongodb": "^3.1.10"
+  }
+}
