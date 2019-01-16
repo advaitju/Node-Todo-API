@@ -18,6 +18,8 @@
   },
   "homepage": "https://github.com/advaitju/Node-Todo-API#readme",
   "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.14.0",
     "mongodb": "^3.1.10",
     "mongoose": "^5.4.4"
   }
