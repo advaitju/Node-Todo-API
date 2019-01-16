@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+const mongoose = require('mongoose')
 
 const User = mongoose.model('User', {
   email: {
@@ -7,6 +7,6 @@ const User = mongoose.model('User', {
     minLength: 1,
     trim: true
   }
-});
+})
 
-module.exports = {User};
+module.exports = {User}
