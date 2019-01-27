@@ -16,7 +16,17 @@ app.post('/todos', (req, res) => {
 
   todo.save().then((doc) => {
     res.send(doc)
-  }, (error) => {
+  })
+  .catch((error) => {
+    res.status(400).send(error)
+  })
+})
+
+app.get('/todos', (req, res) => {
+  Todo.find().then((todos) => {
+    res.send({todos})
+  })
+  .catch((error) => {
     res.status(400).send(error)
   })
 })
