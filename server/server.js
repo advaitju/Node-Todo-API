@@ -48,16 +48,6 @@ app.get('/todos/:id', (req, res) => {
   }).catch((error) => res.status(404).send())
 })
 
-  // Validate ID
-    // Failure: 404, send empty send
-
-  // findById
-    // success
-      // if todo - send it back
-      // if no todo - 404, send empty send
-    // error
-      // 404 - send empty send
-
 app.listen(3000, () => {
   console.log('Started on port 3000')
 })
