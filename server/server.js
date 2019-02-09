@@ -94,6 +94,82 @@ app.patch('/todos/:id', (req, res) => {
   }).catch(err => res.status(400).send())
 })
 
+// User endpoints
+app.post('/users', (req, res) => {
+  var user = new User({
+    email: req.body.email
+  })
+
+  user.save().then((doc) => {
+    res.send(doc)
+  })
+  .catch((error) => {
+    res.status(400).send(error)
+  })
+})
+
+app.get('/users', (req, res) => {
+  User.find().then((users) => {
+    res.send({users})
+  })
+  .catch((error) => {
+    res.status(400).send(error)
+  })
+})
+
+app.get('/users/:id', (req, res) => {
+  var id = req.params.id
+
+  if (!ObjectId.isValid(id)) {
+    return res.status(404).send()
+  }
+
+  User.findById(id).then((user) => {
+    if (!user) {
+      return res.status(404).send()
+    }
+
+    res.status(200).send({user})
+  }).catch(error => res.status(400).send())
+})
+
+app.delete('/users/:id', (req, res) => {
+  var id = req.params.id
+
+  if (!ObjectId.isValid(id)) {
+    return res.status(404).send()
+  }
+
+  User.findByIdAndRemove(id).then(user => {
+    if (!user) {
+      return res.status(404).send()
+    }
+
+    res.status(200).send({user})
+  }).catch(error => res.status(400).send())
+})
+
+app.patch('/users/:id', (req, res) => {
+  var id = req.params.id
+  var body = _.pick(req.body, ['email'])
+
+  if (!ObjectId.isValid(id)) {
+    return res.status(404).send()
+  }
+
+  User.findByIdAndUpdate(id, {
+    $set: body
+  }, {
+    new: true
+  }).then((user) => {
+    if (!user) {
+      return res.status(404).send()
+    }
+
+    res.status(200).send({user})
+  }).catch(err => res.status(400).send())
+})
+
 app.listen(port, () => {
   console.log(`Started up at port ${port}`)
 })
